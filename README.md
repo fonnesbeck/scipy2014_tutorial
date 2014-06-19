@@ -22,6 +22,6 @@ One of the key features of Anaconda is a command line utility called `conda` tha
 
 This should install any prerequisite packages that are required to run PyMC.
 
-For those of you on Mac OS X that are already using the [Homebrew](http://brew.sh) package manager, I have prepared a script that will install the entire Python scientific stack, including PyMC 2.3. You can download the script [here](https://dl.dropboxusercontent.com/u/233041/install_superpack_brew.sh) and run it via:
+For those of you on Mac OS X that are already using the [Homebrew](http://brew.sh) package manager, I have prepared a script that will install the entire Python scientific stack, including PyMC 2.3. You can download the script [here](https://gist.github.com/fonnesbeck/7de008b05e670d919b71) and run it via:
 
     sh install_superpack_brew.sh
