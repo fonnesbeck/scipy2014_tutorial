@@ -18,11 +18,13 @@ This tutorial requires the following third-party packages to be installed on you
 
 The easiest way to install the Python packages required for this tutorial is via [Anaconda](https://store.continuum.io/cshop/anaconda/), a scientific Python distribution offered by Continuum analytics. Several other tutorials will be recommending a similar setup. 
 
-One of the key features of Anaconda is a command line utility called `conda` that can be used to manage third party packages. We have built a PyMC package for `conda` that can be installed from your terminal via the following command:
+One of the key features of Anaconda is a command line utility called `conda` that can be used to manage third party packages. We have built a PyMC package for `conda` (Python 2.7.x only) that can be installed from your terminal via the following command:
 
     conda install -c https://conda.binstar.org/pymc pymc
 
-This should install any prerequisite packages that are required to run PyMC.
+This should install any prerequisite packages that are required to run PyMC. Those wishing to run PyMC under Python 3 should build it from source:
+
+    pip install git+git://github.com/pymc-devs/pymc.git@2.3
 
 For those of you on Mac OS X that are already using the [Homebrew](http://brew.sh) package manager, I have prepared a script that will install the entire Python scientific stack, including PyMC 2.3. You can download the script [here](https://gist.github.com/fonnesbeck/7de008b05e670d919b71) and run it via:
 
