@@ -13,6 +13,8 @@ This tutorial requires the following third-party packages to be installed on you
 - SciPy (>= 0.12)
 - matplotlib (>=1.2.1)
 - PyMC 2.3
+- nose (OPTIONAL for testing)
+- gFortran (OPTIONAL to build from source)
 
 The easiest way to install the Python packages required for this tutorial is via [Anaconda](https://store.continuum.io/cshop/anaconda/), a scientific Python distribution offered by Continuum analytics. Several other tutorials will be recommending a similar setup. 
 
