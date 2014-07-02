@@ -8,6 +8,8 @@ The aim of this course is to introduce new users to the Bayesian approach of sta
 
 All course content will be available as a GitHub repository, including IPython notebooks and example data.
 
+**To account for last-minute updates to course material, please clone the repository on the day of the tutorial**
+
 ## Tutorial Outline
 
 1.  Introduction to Bayesian statistics.
@@ -27,6 +29,7 @@ This tutorial requires the following third-party packages to be installed on you
 - matplotlib (>=1.2.1)
 - PyMC 2.3.3
 - nose (OPTIONAL for testing)
+- pydot (OPTIONAL; also requires [GraphViz](http://www.graphviz.org))
 - gFortran (OPTIONAL to build from source)
 
 The easiest way to install the Python packages required for this tutorial is via [Anaconda](https://store.continuum.io/cshop/anaconda/), a scientific Python distribution offered by Continuum analytics. Several other tutorials will be recommending a similar setup. 
