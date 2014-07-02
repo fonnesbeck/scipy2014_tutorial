@@ -1,8 +1,21 @@
 # Bayesian Statistical Analysis in Python
 
-**SciPy 2014 Tutorial**
+The aim of this course is to introduce new users to the Bayesian approach of statistical modeling and analysis, so that they can use Python packages such as NumPy, SciPy and [PyMC](https://github.com/pymc-devs/pymc) effectively to analyze their own data. It is designed to get users quickly up and running with Bayesian methods, incorporating just enough statistical background to allow users to understand, in general terms, what they are implementing. The tutorial will be example-driven, with illustrative case studies using real data. Selected methods will include approximation methods, importance sampling, Markov chain Monte Carlo (MCMC) methods such as Metropolis-Hastings and Slice sampling. In addition to model fitting, the tutorial will address important techniques for model checking, model comparison, and steps for preparing data and processing model output. Tutorial content will be derived from the instructor's book *Bayesian Statistical Computing using Python*, to be published by Springer in late 2014.
 
-This tutorial is a *work in progress* until July 1, 2014. I recommend waiting to clone or fork until then.
+![PyMC forest plot](http://d.pr/i/pqWT+)
+
+![DAG](http://d.pr/i/AHZV+)
+
+All course content will be available as a GitHub repository, including IPython notebooks and example data.
+
+## Tutorial Outline
+
+1.  Introduction to Bayesian statistics.
+2.  Markov chain Monte Carlo (MCMC)
+3.  The Essentials of PyMC
+4.  Fitting Statistical Models in PyMC
+5.  Hierarchical Modeling
+6.  Model Checking and Validation
 
 ## Package Installation
 
