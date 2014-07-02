@@ -25,7 +25,7 @@ This tutorial requires the following third-party packages to be installed on you
 - NumPy (>= 1.7)
 - SciPy (>= 0.12)
 - matplotlib (>=1.2.1)
-- PyMC 2.3
+- PyMC 2.3.3
 - nose (OPTIONAL for testing)
 - gFortran (OPTIONAL to build from source)
 
@@ -37,7 +37,7 @@ One of the key features of Anaconda is a command line utility called `conda` tha
 
 This should install any prerequisite packages that are required to run PyMC. Those wishing to run PyMC under Python 3 should build it from source:
 
-    pip install git+git://github.com/pymc-devs/pymc.git@2.3
+    pip install git+git://github.com/pymc-devs/pymc.git@2.3.3
 
 For those of you on Mac OS X that are already using the [Homebrew](http://brew.sh) package manager, I have prepared a script that will install the entire Python scientific stack, including PyMC 2.3. You can download the script [here](https://gist.github.com/fonnesbeck/7de008b05e670d919b71) and run it via:
 
