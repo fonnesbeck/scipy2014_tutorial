@@ -1,0 +1,1101 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{1\_Introduction-to-Bayes}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    Table of Contents{}
+
+{{1~~}An Introduction to Bayesian Statistical Analysis}
+
+{{2~~}What is Bayesian Statistical Analysis?}
+
+{{3~~}What is Probability?}
+
+{{3.1~~}1. Classical probability}
+
+{{3.2~~}2. Frequentist probability}
+
+{{3.3~~}3. Subjective probability}
+
+{{4~~}Bayesian vs Frequentist Statistics: What's the difference?}
+
+{{4.1~~}The Frequentist World View}
+
+{{4.2~~}The Bayesian World View}
+
+{{5~~}Bayes' Formula}
+
+{{5.1~~}Example: Genetic probabilities}
+
+{{6~~}More on Bayesian Terminology}
+
+{{6.1~~}Marginal}
+
+{{6.2~~}Prior}
+
+{{6.3~~}Likelihood}
+
+{{6.4~~}Posterior}
+
+{{7~~}Why be Bayesian?}
+
+{{7.1~~}Example: confidence vs.~credible intervals}
+
+{{8~~}Bayesian Inference, in 3 Easy Steps}
+
+{{8.1~~}Step 1: Specify a probability model}
+
+{{8.2~~}Step 2: Calculate a posterior distribution}
+
+{{8.3~~}Step 3: Check your model}
+
+{{9~~}References}
+
+    \hypertarget{an-introduction-to-bayesian-statistical-analysis}{%
+\subsection{An Introduction to Bayesian Statistical
+Analysis}\label{an-introduction-to-bayesian-statistical-analysis}}
+
+    Before we jump in to model-building and using MCMC to do wonderful
+things, it is useful to understand a few of the theoretical
+underpinnings of the Bayesian statistical paradigm. A little theory (and
+I do mean a \emph{little}) goes a long way towards being able to apply
+the methods correctly and effectively.
+
+There are several introductory references to Bayesian statistics that go
+well beyond what we will cover here. Some suggestions:
+
+\href{https://www.kobo.com/us/en/ebook/schaum-s-outline-of-probability-and-statistics-4th-edition}{Chapter
+11 of Schaum's Outline of Probability and Statistics}
+
+\href{https://www.stat.auckland.ac.nz/~brewer/stats331.pdf}{Introduction
+to Bayesian Statistics}
+
+\href{https://www.york.ac.uk/depts/maths/histstat/pml1/bayes/book.htm}{Bayesian
+Statistics}
+
+\hypertarget{what-is-bayesian-statistical-analysis}{%
+\subsection{\texorpdfstring{What \emph{is} Bayesian Statistical
+Analysis?}{What is Bayesian Statistical Analysis?}}\label{what-is-bayesian-statistical-analysis}}
+
+Though many of you will have taken a statistics course or two during
+your undergraduate (or graduate) education, most of those who have will
+likely not have had a course in \emph{Bayesian} statistics. Most
+introductory courses, particularly for non-statisticians, still do not
+cover Bayesian methods at all, except perhaps to derive Bayes' formula
+as a trivial rearrangement of the definition of conditional probability.
+Even today, Bayesian courses are typically tacked onto the curriculum,
+rather than being integrated into the program.
+
+In fact, Bayesian statistics is not just a particular method, or even a
+class of methods; it is an entirely different paradigm for doing
+statistical analysis.
+
+\begin{quote}
+Practical methods for making inferences from data using probability
+models for quantities we observe and about which we wish to learn.
+\emph{-- Gelman et al.~2013}
+\end{quote}
+
+A Bayesian model is described by parameters, uncertainty in those
+parameters is described using probability distributions.
+
+    All conclusions from Bayesian statistical procedures are stated in terms
+of \emph{probability statements}
+
+\includegraphics{images/prob_model.png}
+
+This confers several benefits to the analyst, including:
+
+\begin{itemize}
+\tightlist
+\item
+  ease of interpretation, summarization of uncertainty
+\item
+  can incorporate uncertainty in parent parameters
+\item
+  easy to calculate summary statistics
+\end{itemize}
+
+    \hypertarget{what-is-probability}{%
+\subsection{What is Probability?}\label{what-is-probability}}
+
+\begin{quote}
+\emph{Misunderstanding of probability may be the greatest of all
+impediments to scientific literacy.} --- Stephen Jay Gould
+\end{quote}
+
+It is useful to start with defining what probability is. There are three
+main categories:
+
+\hypertarget{classical-probability}{%
+\subsubsection{1. Classical probability}\label{classical-probability}}
+
+\[Pr(X=x) = \frac{\text{# x outcomes}}{\text{# possible outcomes}}\]
+
+Classical probability is an assessment of \textbf{possible} outcomes of
+elementary events. Elementary events are assumed to be equally likely.
+
+\hypertarget{frequentist-probability}{%
+\subsubsection{2. Frequentist
+probability}\label{frequentist-probability}}
+
+\[Pr(X=x) = \lim_{n \rightarrow \infty} \frac{\text{# times x has occurred}}{\text{# independent and identical trials}}\]
+
+This interpretation considers probability to be the relative frequency
+``in the long run'' of outcomes.
+
+\hypertarget{subjective-probability}{%
+\subsubsection{3. Subjective probability}\label{subjective-probability}}
+
+\[Pr(X=x)\]
+
+Subjective probability is a measure of one's uncertainty in the value of
+\(X\). It characterizes the state of knowledge regarding some unknown
+quantity using probability.
+
+It is not associated with long-term frequencies nor with
+equal-probability events.
+
+For example:
+
+\begin{itemize}
+\tightlist
+\item
+  X = the true prevalence of diabetes in Austin is \textless{} 15\%
+\item
+  X = the blood type of the person sitting next to you is type A
+\item
+  X = the Nashville Predators will win next year's Stanley Cup
+\item
+  X = it is raining in Nashville
+\end{itemize}
+
+    \hypertarget{bayesian-vs-frequentist-statistics-whats-the-difference}{%
+\subsection{Bayesian vs Frequentist Statistics: What's the
+difference?}\label{bayesian-vs-frequentist-statistics-whats-the-difference}}
+
+See the
+\href{http://conference.scipy.org/proceedings/scipy2014/pdfs/vanderplas.pdf}{VanderPlas
+paper and video}.
+
+\begin{figure}
+\centering
+\includegraphics{images/can-of-worms.jpg}
+\caption{can of worms}
+\end{figure}
+
+Any statistical paradigm, Bayesian or otherwise, involves at least the
+following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Some \textbf{unknown quantities} about which we are interested in
+  learning or testing. We call these \emph{parameters}.
+\item
+  Some \textbf{data} which have been observed, and hopefully contain
+  information about (1).
+\item
+  One or more \textbf{models} that relate the data to the parameters,
+  and is the instrument that is used to learn.
+\end{enumerate}
+
+    \hypertarget{the-frequentist-world-view}{%
+\subsubsection{The Frequentist World
+View}\label{the-frequentist-world-view}}
+
+\begin{figure}
+\centering
+\includegraphics{images/fisher.png}
+\caption{Fisher}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  The data that have been observed are considered \textbf{random},
+  because they are realizations of random processes, and hence will vary
+  each time one goes to observe the system.
+\item
+  Model parameters are considered \textbf{fixed}. The parameters' values
+  are unknown, but they are fixed, and so we \emph{condition} on them.
+\end{itemize}
+
+In mathematical notation, this implies a (very) general model of the
+following form:
+
+\[f(y | \theta)\]
+
+Here, the model \(f\) accepts data values \(y\) as an argument,
+conditional on particular values of \(\theta\).
+
+Frequentist inference typically involves deriving \textbf{estimators}
+for the unknown parameters. Estimators are formulae that return
+estimates for particular estimands, as a function of data. They are
+selected based on some chosen optimality criterion, such as
+\emph{unbiasedness}, \emph{variance minimization}, or \emph{efficiency}.
+
+\begin{quote}
+For example, lets say that we have collected some data on the prevalence
+of autism spectrum disorder (ASD) in some defined population. Our sample
+includes \(n\) sampled children, \(y\) of them having been diagnosed
+with autism. A frequentist estimator of the prevalence \(p\) is:
+\end{quote}
+
+\begin{quote}
+\[\hat{p} = \frac{y}{n}\]
+\end{quote}
+
+\begin{quote}
+Why this particular function? Because it can be shown to be unbiased and
+minimum-variance.
+\end{quote}
+
+It is important to note that new estimators need to be derived for every
+estimand that is introduced.
+
+\hypertarget{the-bayesian-world-view}{%
+\subsubsection{The Bayesian World View}\label{the-bayesian-world-view}}
+
+\begin{figure}
+\centering
+\includegraphics{images/bayes.png}
+\caption{Bayes}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Data are considered \textbf{fixed}. They used to be random, but once
+  they were written into your lab notebook/spreadsheet/IPython notebook
+  they do not change.
+\item
+  Model parameters themselves may not be random, but Bayesians use
+  probability distribtutions to describe their uncertainty in parameter
+  values, and are therefore treated as \textbf{random}. In some cases,
+  it is useful to consider parameters as having been sampled from
+  probability distributions.
+\end{itemize}
+
+This implies the following form:
+
+\[p(\theta | y)\]
+
+This formulation used to be referred to as \textbf{\emph{inverse
+probability}}, because it infers from observations to parameters, or
+from effects to causes.
+
+Bayesians do not seek new estimators for every estimation problem they
+encounter. There is only one estimator for Bayesian inference:
+\textbf{Bayes' Formula}.
+
+    \hypertarget{bayes-formula}{%
+\subsection{Bayes' Formula}\label{bayes-formula}}
+
+Given two events A and B, the conditional probability of A given that B
+is true is expressed as follows:
+
+\[Pr(A|B) = \frac{Pr(B|A)Pr(A)}{Pr(B)}\]
+
+where P(B)\textgreater{}0. Although Bayes' theorem is a fundamental
+result of probability theory, it has a specific interpretation in
+Bayesian statistics.
+
+In the above equation, A usually represents a proposition (such as the
+statement that a coin lands on heads fifty percent of the time) and B
+represents the evidence, or new data that is to be taken into account
+(such as the result of a series of coin flips). P(A) is the
+\textbf{prior} probability of A which expresses one's beliefs about A
+before evidence is taken into account. The prior probability may also
+quantify prior knowledge or information about A.
+
+P(B\textbar{}A) is the \textbf{likelihood}, which can be interpreted as
+the probability of the evidence B given that A is true. The likelihood
+quantifies the extent to which the evidence B supports the proposition
+A.
+
+P(A\textbar{}B) is the \textbf{posterior} probability, the probability
+of the proposition A after taking the evidence B into account.
+Essentially, Bayes' theorem updates one's prior beliefs P(A) after
+considering the new evidence B.
+
+P(B) is the \textbf{marginal likelihood}, which can be interpreted as
+the sum of the conditional probability of B under all possible events
+\$A\_i\# in the sample space
+
+\begin{itemize}
+\tightlist
+\item
+  For two events \(P(B) = P(B|A)P(A) + P(B|\bar{A})P(\bar{A})\)
+\end{itemize}
+
+    \hypertarget{example-genetic-probabilities}{%
+\subsubsection{Example: Genetic
+probabilities}\label{example-genetic-probabilities}}
+
+Let's put Bayesian inference into action using a very simple example.
+I've chosen this example because it is one of the rare occasions where
+the posterior can be calculated by hand. We will show how data can be
+used to update our belief in competing hypotheses.
+
+Hemophilia is a rare genetic disorder that impairs the ability for the
+body's clotting factors to coagualate the blood in response to broken
+blood vessels. The disease is an \textbf{x-linked recessive} trait,
+meaning that there is only one copy of the gene in males but two in
+females, and the trait can be masked by the dominant allele of the gene.
+
+This implies that males with 1 gene are \emph{affected}, while females
+with 1 gene are unaffected, but \emph{carriers} of the disease. Having 2
+copies of the disease is fatal, so this genotype does not exist in the
+population.
+
+In this example, consider a woman whose mother is a carrier (because her
+brother is affected) and who marries an unaffected man. Let's now
+observe some data: the woman has two consecutive (non-twin) sons who are
+unaffected. We are interested in determining \textbf{if the woman is a
+carrier}.
+
+\begin{figure}
+\centering
+\includegraphics{images/hemophilia.png}
+\caption{hemophilia}
+\end{figure}
+
+To set up this problem, we need to set up our probability model. The
+unknown quantity of interest is simply an indicator variable \(W\) that
+equals 1 if the woman is affected, and zero if she is not. We are
+interested in the probability that the variable equals one, given what
+we have observed:
+
+\[Pr(W=1 | s_1=0, s_2=0)\]
+
+Our prior information is based on what we know about the woman's
+ancestry: her mother was a carrier. Hence, the prior is
+\(Pr(W=1) = 0.5\). Another way of expressing this is in terms of the
+\textbf{prior odds}, or:
+
+\[O(W=1) = \frac{Pr(W=1)}{Pr(W=0)} = 1\]
+
+Now for the likelihood: The form of this function is:
+
+\[L(W | s_1=0, s_2=0)\]
+
+This can be calculated as the probability of observing the data for any
+passed value for the parameter. For this simple problem, the likelihood
+takes only two possible values:
+
+\[\begin{aligned}
+L(W=1 &| s_1=0, s_2=0) = (0.5)(0.5) = 0.25 \cr
+L(W=0 &| s_1=0, s_2=0) = (1)(1) = 1
+\end{aligned}\]
+
+With all the pieces in place, we can now apply Bayes' formula to
+calculate the posterior probability that the woman is a carrier:
+
+\[\begin{aligned}
+Pr(W=1 | s_1=0, s_2=0) &= \frac{L(W=1 | s_1=0, s_2=0) Pr(W=1)}{L(W=1 | s_1=0, s_2=0) Pr(W=1) + L(W=0 | s_1=0, s_2=0) Pr(W=0)} \cr
+ &= \frac{(0.25)(0.5)}{(0.25)(0.5) + (1)(0.5)} \cr
+ &= 0.2
+\end{aligned}\]
+
+Hence, there is a 0.2 probability of the woman being a carrier.
+
+Its a bit trivial, but we can code this in Python:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{prior} \PY{o}{=} \PY{l+m+mf}{0.5}
+         \PY{n}{p} \PY{o}{=} \PY{l+m+mf}{0.5}
+         
+         \PY{n}{L} \PY{o}{=} \PY{k}{lambda} \PY{n}{w}\PY{p}{,} \PY{n}{s}\PY{p}{:} \PY{n}{np}\PY{o}{.}\PY{n}{prod}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{i}\PY{p}{,} \PY{n}{p}\PY{o}{*}\PY{o}{*}\PY{n}{i} \PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{p}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{i}\PY{p}{)}\PY{p}{)}\PY{p}{[}\PY{n}{w}\PY{p}{]} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{s}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{s} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}
+         
+         \PY{n}{post} \PY{o}{=} \PY{n}{L}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{s}\PY{p}{)} \PY{o}{*} \PY{n}{prior} \PY{o}{/} \PY{p}{(}\PY{n}{L}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{s}\PY{p}{)} \PY{o}{*} \PY{n}{prior} \PY{o}{+} \PY{n}{L}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{s}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{prior}\PY{p}{)}\PY{p}{)}
+         \PY{n}{post}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} 0.2
+\end{Verbatim}
+            
+    Now, what happens if the woman has a third unaffected child? What is our
+estimate of her probability of being a carrier then?
+
+Bayes' formula makes it easy to update analyses with new information, in
+a sequential fashion. We simply assign the posterior from the previous
+analysis to be the prior for the new analysis, and proceed as before:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{L}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:} 0.5
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{s} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+         \PY{n}{prior} \PY{o}{=} \PY{n}{post}
+         
+         \PY{n}{L}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{s}\PY{p}{)} \PY{o}{*} \PY{n}{prior} \PY{o}{/} \PY{p}{(}\PY{n}{L}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{s}\PY{p}{)} \PY{o}{*} \PY{n}{prior} \PY{o}{+} \PY{n}{L}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{s}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{prior}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:} 0.11111111111111112
+\end{Verbatim}
+            
+    Thus, observing a third unaffected child has further reduced our belief
+that the mother is a carrier.
+
+    \hypertarget{more-on-bayesian-terminology}{%
+\subsection{More on Bayesian
+Terminology}\label{more-on-bayesian-terminology}}
+
+Replacing Bayes' Formula with conventional Bayes terms:
+
+\begin{figure}
+\centering
+\includegraphics{images/bayes_formula.png}
+\caption{bayes formula}
+\end{figure}
+
+The equation expresses how our belief about the value of \(\theta\), as
+expressed by the \textbf{prior distribution} \(P(\theta)\) is
+reallocated following the observation of the data \(y\), as expressed by
+the posterior distribution the posterior distribution.
+
+\hypertarget{marginal}{%
+\subsubsection{Marginal}\label{marginal}}
+
+The denominator \(P(y)\) is the likelihood integrated over all
+\(\theta\):
+
+\[Pr(\theta|y) = \frac{Pr(y|\theta)Pr(\theta)}{\int Pr(y|\theta)Pr(\theta) d\theta}\]
+
+This usually cannot be calculated directly. However it is just a
+normalization constant which doesn't depend on the parameter; the act of
+summation washes out whatever info we had about the parameter. Hence it
+can often be ignored;The normalising constant makes sure that the
+resulting posterior distribution is a true probability distribution by
+ensuring that the sum of the distribution is equal to 1.
+
+In some cases we don't care about this property of the distribution. We
+only care about where the peak of the distribution occurs, regardless of
+whether the distribution is normalised or not
+
+Unfortunately sometimes we are obliged to calculate it. The
+intractability of this integral is one of the factors that has
+contributed to the under-utilization of Bayesian methods by
+statisticians.
+
+\hypertarget{prior}{%
+\subsubsection{Prior}\label{prior}}
+
+Once considered a controversial aspect of Bayesian analysis, the prior
+distribution characterizes what is known about an unknown quantity
+before observing the data from the present study. Thus, it represents
+the information state of that parameter. It can be used to reflect the
+information obtained in previous studies, to constrain the parameter to
+plausible values, or to represent the population of possible parameter
+values, of which the current study's parameter value can be considered a
+sample.
+
+\hypertarget{likelihood}{%
+\subsubsection{Likelihood}\label{likelihood}}
+
+The likelihood represents the information in the observed data, and is
+used to update prior distributions to posterior distributions. This
+updating of belief is justified becuase of the \textbf{likelihood
+principle}, which states:
+
+\begin{quote}
+Following observation of \(y\), the likelihood \(L(\theta|y)\) contains
+all experimental information from \(y\) about the unknown \(\theta\).
+\end{quote}
+
+Bayesian analysis satisfies the likelihood principle because the
+posterior distribution's dependence on the data is only through the
+likelihood. In comparison, most frequentist inference procedures violate
+the likelihood principle, because inference will depend on the design of
+the trial or experiment.
+
+What is a likelihood function? It is closely related to the probability
+density (or mass) function. Taking a common example, consider some data
+that are binomially distributed (that is, they describe the outcomes of
+\(n\) binary events). Here is the binomial sampling distribution:
+
+\[p(Y|\theta) = {n \choose y} \theta^{y} (1-\theta)^{n-y}\]
+
+We can code this easily in Python:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k+kn}{from} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{special} \PY{k}{import} \PY{n}{comb}
+        
+        \PY{n}{pbinom} \PY{o}{=} \PY{k}{lambda} \PY{n}{y}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{n}{p}\PY{p}{:} \PY{n}{comb}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{y}\PY{p}{)} \PY{o}{*} \PY{n}{p}\PY{o}{*}\PY{o}{*}\PY{n}{y} \PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{p}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{n}{y}\PY{p}{)}
+\end{Verbatim}
+
+
+    This function returns the probability of observing \(y\) events from
+\(n\) trials, where events occur independently with probability \(p\).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{pbinom}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} 0.1171875
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{pbinom}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} 7.450580596923828e-07
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{yvals} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{yvals}\PY{p}{,} \PY{p}{[}\PY{n}{pbinom}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{)} \PY{k}{for} \PY{n}{y} \PY{o+ow}{in} \PY{n}{yvals}\PY{p}{]}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ro}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_20_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    What about the likelihood function?
+
+The likelihood function is the exact same form as the sampling
+distribution, except that we are now interested in varying the parameter
+for a given dataset.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{pvals} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n}{y} \PY{o}{=} \PY{l+m+mi}{4}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{pvals}\PY{p}{,} \PY{p}{[}\PY{n}{pbinom}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{n}{p}\PY{p}{)} \PY{k}{for} \PY{n}{p} \PY{o+ow}{in} \PY{n}{pvals}\PY{p}{]}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_22_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    So, though we are dealing with the same equation, these are entirely
+different functions; the distribution is discrete, while the likelihood
+is continuous; the distribtion's range is from 0 to 10, while the
+likelihood's is 0 to 1; the distribution integrates (sums) to one, while
+the likelhood does not.
+
+    \hypertarget{posterior}{%
+\subsubsection{Posterior}\label{posterior}}
+
+The mathematical form \(p(\theta | y)\) that we associated with the
+Bayesian approach is referred to as a \textbf{posterior distribution}.
+
+\begin{quote}
+posterior /pos·ter·i·or/ (pos-tēr´e-er) later in time; subsequent.
+\end{quote}
+
+Why posterior? Because it tells us what we know about the unknown
+\(\theta\) \emph{after} having observed \(y\).
+
+    \hypertarget{why-be-bayesian}{%
+\subsection{Why be Bayesian?}\label{why-be-bayesian}}
+
+At this point, it is worth addressing the question of why one might
+consider an alternative statistical paradigm to the
+classical/frequentist statistical approach. After all, it is not always
+easy to specify a full probabilistic model, nor to obtain output from
+the model once it is specified. So, why bother?
+
+\begin{quote}
+\ldots{} the Bayesian approach is attractive because it is useful. Its
+usefulness derives in large measure from its simplicity. Its simplicity
+allows the investigation of far more complex models than can be handled
+by the tools in the classical toolbox.\\
+\emph{-- Link and Barker 2010}
+\end{quote}
+
+We already noted that there is just one estimator in Bayesian inference,
+which lends to its \textbf{\emph{simplicity}}. Moreover, Bayes affords a
+conceptually simple way of coping with multiple parameters; the use of
+probabilistic models allows very complex models to be assembled in a
+modular fashion, by factoring a large joint model into the product of
+several conditional probabilities.
+
+Bayesian statistics is also attractive for its
+\textbf{\emph{coherence}}. All unknown quantities for a particular
+problem are treated as random variables, to be estimated in the same
+way. Existing knowledge is given precise mathematical expression,
+allowing it to be integrated with information from the study dataset,
+and there is formal mechanism for incorporating new information into an
+existing analysis.
+
+Finally, Bayesian statistics confers an advantage in the
+\textbf{\emph{interpretability}} of analytic outputs. Because models are
+expressed probabilistically, results can be interpreted
+probabilistically. Probabilities are easy for users (particularly
+non-technical users) to understand and apply.
+
+    \hypertarget{example-confidence-vs.credible-intervals}{%
+\subsubsection{Example: confidence vs.~credible
+intervals}\label{example-confidence-vs.credible-intervals}}
+
+A commonly-used measure of uncertainty for a statistical point estimate
+in classical statistics is the \textbf{\emph{confidence interval}}. Most
+scientists were introduced to the confidence interval during their
+introductory statistics course(s) in college. Yet, a large number of
+users mis-interpret the confidence interval.
+
+Here is the mathematical definition of a 95\% confidence interval for
+some unknown scalar quantity that we will here call \(\theta\):
+
+\[Pr(a(Y) < \theta < b(Y) | \theta) = 0.95\]
+
+how the endpoints of this interval are calculated varies according to
+the sampling distribution of \(Y\), but for as an example, the
+confidence interval for the population mean when \(Y\) is normally
+distributed is calculated by:
+
+\[Pr(\bar{Y} - 1.96\frac{\sigma}{\sqrt{n}}< \theta < \bar{Y} + 1.96\frac{\sigma}{\sqrt{n}}) = 0.95\]
+
+It would be tempting to use this definition to conclude that there is a
+95\% chance \(\theta\) is between \(a(Y)\) and \(b(Y)\), but that would
+be a mistake.
+
+Recall that for frequentists, unknown parameters are \textbf{fixed},
+which means there is no probability associated with them being any value
+except what they are fixed to. Here, the interval itself, and not
+\(\theta\) is the random variable. The actual interval calculated from
+the data is just one possible realization of a random process, and it
+must be strictly interpreted only in relation to an infinite sequence of
+identical trials that might be (but never are) conducted in practice.
+
+A valid interpretation of the above would be:
+
+\begin{quote}
+If the experiment were repeated an infinite number of times, 95\% of the
+calculated intervals would contain \(\theta\).
+\end{quote}
+
+This is what the statistical notion of ``confidence'' entails, and this
+sets it apart from probability intervals.
+
+Since they regard unknown parameters as random variables, Bayesians can
+and do use probability intervals to describe what is known about the
+value of an unknown quantity. These intervals are commonly known as
+\textbf{\emph{credible intervals}}.
+
+The definition of a 95\% credible interval is:
+
+\[Pr(a(y) < \theta < b(y) | Y=y) = 0.95\]
+
+Notice that we condition here on the data \(y\) instead of the unknown
+\(\theta\). Thus, the endpoints are fixed and the variable is random.
+
+We are allowed to interpret this interval as:
+
+\begin{quote}
+There is a 95\% chance \(\theta\) is between \(a\) and \(b\).
+\end{quote}
+
+Hence, the credible interval is a statement of what we know about the
+value of \(\theta\) based on the observed data.
+
+    \hypertarget{bayesian-inference-in-3-easy-steps}{%
+\subsection{Bayesian Inference, in 3 Easy
+Steps}\label{bayesian-inference-in-3-easy-steps}}
+
+We are now ready (and willing!) to apply Bayesian methods to our
+problem. Gelman et al. (2013) describe the process of conducting
+Bayesian statistical analysis in 3 steps:
+
+\begin{figure}
+\centering
+\includegraphics{images/123.png}
+\caption{123}
+\end{figure}
+
+\hypertarget{step-1-specify-a-probability-model}{%
+\subsubsection{Step 1: Specify a probability
+model}\label{step-1-specify-a-probability-model}}
+
+As was noted above, Bayesian statistics involves using probability
+models to solve problems. So, the first task is to \emph{completely
+specify} the model in terms of probability distributions. This includes
+everything: unknown parameters, data, covariates, missing data,
+predictions. All must be assigned some probability density.
+
+This step involves making choices.
+
+\begin{itemize}
+\tightlist
+\item
+  what is the form of the sampling distribution of the data?
+\item
+  what form best describes our uncertainty in the unknown parameters?
+\end{itemize}
+
+\hypertarget{step-2-calculate-a-posterior-distribution}{%
+\subsubsection{Step 2: Calculate a posterior
+distribution}\label{step-2-calculate-a-posterior-distribution}}
+
+The posterior distribution is formulated as a function of the
+probability model that was specified in Step 1. Usually, we can write it
+down but we cannot calculate it analytically. In fact, the difficulty
+inherent in calculating the posterior distribution for most models of
+interest is perhaps the major contributing factor for the lack of
+widespread adoption of Bayesian methods for data analysis.
+
+\textbf{But}, once the posterior distribution is calculated, you get a
+lot for free:
+
+\begin{itemize}
+\tightlist
+\item
+  point estimates
+\item
+  credible intervals
+\item
+  quantiles
+\item
+  predictions
+\end{itemize}
+
+\hypertarget{step-3-check-your-model}{%
+\subsubsection{Step 3: Check your model}\label{step-3-check-your-model}}
+
+Though frequently ignored in practice, it is critical that the model and
+its outputs be assessed before using the outputs for inference. Models
+are specified based on assumptions that are largely unverifiable, so the
+least we can do is examine the output in detail, relative to the
+specified model and the data that were used to fit the model.
+
+Specifically, we must ask:
+
+\begin{itemize}
+\tightlist
+\item
+  does the model fit data?
+\item
+  are the conclusions reasonable?
+\item
+  are the outputs sensitive to changes in model structure?
+\end{itemize}
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+    \hypertarget{references}{%
+\subsection{References}\label{references}}
+
+Gelman A, Carlin JB, Stern HS, Dunson DB, Vehtari A, Rubin DB. Bayesian
+Data Analysis, Third Edition. CRC Press; 2013.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{core}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{HTML}
+         \PY{k}{def} \PY{n+nf}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+             \PY{n}{styles} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{styles/custom.css}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}
+             \PY{k}{return} \PY{n}{HTML}\PY{p}{(}\PY{n}{styles}\PY{p}{)}
+         \PY{n}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
